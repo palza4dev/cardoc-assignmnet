@@ -17,6 +17,9 @@ class SignUpView(View):
             if User.objects.filter(username=username).exists():
                 return JsonResponse({'message': 'USERNAME_ALREADY_EXIST'}, status=400)
             
+            if not re.match(r"^(?=.*[a-z])[a-z0-9]{4,10}$", username):
+                return JsonResponse({'message': 'INVALID_USERNAME'}, status=404)
+            
             if not re.match(r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$", password):
                 return JsonResponse({'message': 'INVALID_PASSWORD'}, status=404)
 
