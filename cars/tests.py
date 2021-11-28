@@ -1,10 +1,9 @@
-import jwt, bcrypt, re
+import jwt, bcrypt
 
-from django.test     import TestCase, Client, client
+from django.test     import TestCase, Client
 
 from cars.models     import Trim, UserTrim, Car, FrontTire, RearTire
 from users.models    import User
-from users.utils     import login_decorator
 from cardoc.settings import SECRET_KEY
 
 class TrimListTest(TestCase):
