@@ -4,7 +4,7 @@ from json.decoder import JSONDecodeError
 from django.views import View
 from django.http  import JsonResponse
 
-from cars.models  import Trim, UserTrim, Car, FrontTire, RearTire
+from cars.models  import Trim, UserTrim, FrontTire, RearTire
 from users.models import User
 from users.utils  import login_decorator
 
@@ -86,6 +86,7 @@ class TrimListView(View):
             'frontTire'    : [{
                 'name'         : front_tire.name,
                 'value'        : front_tire.value,
+                'unit'         : front_tire.unit,
                 'multi_values' : front_tire.multi_values,
                 'width'        : front_tire.width,
                 'profile'      : front_tire.profile,
@@ -94,6 +95,7 @@ class TrimListView(View):
             'rearTire'    : [{
                 'name'         : rear_tire.name,
                 'value'        : rear_tire.value,
+                'unit'         : rear_tire.unit,
                 'multi_values' : rear_tire.multi_values,
                 'width'        : rear_tire.width,
                 'profile'      : rear_tire.profile,
@@ -119,11 +121,13 @@ class TrimDetailView(View):
                 'frontTire'    : {
                     'name'         : front_tire.name,
                     'value'        : front_tire.value,
+                    'unit'         : front_tire.unit,
                     'multi_values' : front_tire.multi_values,
                     },
                 'rearTire'    : {
                     'name'         : rear_tire.name,
                     'value'        : rear_tire.value,
+                    'unit'         : rear_tire.unit,
                     'multi_values' : rear_tire.multi_values,
                     }
                 }  
